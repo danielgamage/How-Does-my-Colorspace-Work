@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720">
+  <defs>
+    <style>
+      .cls-1 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        fill: #eb008c;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5 {
+        mix-blend-mode: multiply;
+      }
+
+      .cls-3 {
+        fill: #fff200;
+      }
+
+      .cls-4 {
+        fill: #231f20;
+      }
+
+      .cls-5 {
+        fill: #00aeef;
+      }
+    </style>
+  </defs>
+  <title>cmyk</title>
+  <g class="cls-1">
+    <g id="cmyk">
+      <circle id="magenta" class="cls-2" cx="360" cy="303.55" r="280.11"/>
+      <circle id="yellow" class="cls-3" cx="303.55" cy="360" r="280.11"/>
+      <circle id="key" class="cls-4" cx="360" cy="416.45" r="280.11"/>
+      <circle id="cyan" class="cls-5" cx="416.45" cy="360" r="280.11"/>
+    </g>
+  </g>
+</svg>

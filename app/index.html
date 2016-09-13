@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>rgb</title>
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <form id="rgb" class="hero-unit">
+      <h1>How does my screen work?</h1>
+      <p>Each pixel in your screen is made up of three sub-pixels, corresponding to the colors red, blue, and green. because of the proximity of the subpixels, rather than seeing the individual diodes, we tend to see the composite color they form when lit.</p>
+      <div class="rgb__label-group">
+        <label class="rgb__label" for="r">Red</label>
+        <input id="r" data-key="red" class="rgb__range rgb__range--red" type="range" min=0 max=255 />
+      </div>
+      <div class="rgb__label-group">
+        <label class="rgb__label" for="g">Green</label>
+        <input id="g" data-key="green" class="rgb__range rgb__range--green" type="range" min=0 max=255 />
+      </div>
+      <div class="rgb__label-group">
+        <label class="rgb__label" for="b">Blue</label>
+        <input id="b" data-key="blue" class="rgb__range rgb__range--blue" type="range" min=0 max=255 />
+      </div>
+      <output>
+        Hex: <span id=result></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720">
+          <defs>
+            <style>
+              .cls-1 {
+                isolation: isolate;
+              }
+
+              .cls-2 {
+                fill: lime;
+              }
+
+              .cls-2, .cls-3, .cls-4 {
+                mix-blend-mode: screen;
+              }
+
+              .cls-3 {
+                fill: blue;
+              }
+
+              .cls-4 {
+                fill: red;
+              }
+            </style>
+          </defs>
+          <title>rgb</title>
+          <g class="cls-1">
+            <g id="Layer_1" data-name="Layer 1">
+              <circle id="green" class="cls-2" cx="358.78" cy="308.39" r="264.95"/>
+              <circle id="blue" class="cls-3" cx="301.52" cy="407.56" r="264.95" transform="translate(-163.38 205.36) rotate(-30)"/>
+              <circle id="red" class="cls-4" cx="417.56" cy="405.97" r="265.86" transform="translate(-142.49 565.72) rotate(-60.11)"/>
+            </g>
+          </g>
+        </svg>
+
+
+      </output>
+    </form>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+      e.src='https://www.google-analytics.com/analytics.js';
+      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+      ga('create','UA-XXXXX-X');ga('send','pageview');
+    </script>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
