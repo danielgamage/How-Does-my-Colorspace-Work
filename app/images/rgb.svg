@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720">
+  <defs>
+    <style>
+      .rgb-1 {
+        isolation: isolate;
+      }
+
+      .rgb-2 {
+        fill: lime;
+      }
+
+      .rgb-2, .rgb-3, .rgb-4 {
+        mix-blend-mode: screen;
+      }
+
+      .rgb-3 {
+        fill: blue;
+      }
+
+      .rgb-4 {
+        fill: red;
+      }
+    </style>
+  </defs>
+  <title>rgb</title>
+  <g class="rgb-1">
+    <g id="Layer_1" data-name="Layer 1">
+      <circle id="red" class="rgb-4" cx="358.78" cy="308.39" r="256"/>
+      <circle id="green" class="rgb-2" cx="301.52" cy="407.56" r="256" transform="translate(-163.38 205.36) rotate(-30)"/>
+      <circle id="blue" class="rgb-3" cx="417.56" cy="405.97" r="256" transform="translate(-142.49 565.72) rotate(-60.11)"/>
+    </g>
+  </g>
+</svg>

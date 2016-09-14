@@ -23,59 +23,60 @@
     <!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <nav class="header">
+      <ul class="header__list">
+        <li class="header__list-item"><a class="header__list-link" href="/screen">Screen</a>
+        <li class="header__list-item"><a class="header__list-link" href="/printer">Printer</a>
+      </ul>
+    </nav>
 
-    <form id="rgb" class="hero-unit">
-      <h1>How does my screen work?</h1>
-      <p>Each pixel in your screen is made up of three sub-pixels, corresponding to the colors red, blue, and green. because of the proximity of the subpixels, rather than seeing the individual diodes, we tend to see the composite color they form when lit.</p>
-      <div class="rgb__label-group">
-        <label class="rgb__label" for="r">Red</label>
-        <input id="r" data-key="red" class="rgb__range rgb__range--red" type="range" min=0 max=255 />
+    <form class="colorspace colorspace--cmyk" data-colorspace="cmyk">
+      <div class="colorspace__container">
+        <h1 class="colorspace__title colorspace--cmyk__title">How does my printer work?</h1>
+        <p>If you've ever laid ink on top of itself, it tends to get darker, no matter the color. That's how the CMYK color model works. Like RGB, CMYK mixes a few principal colors together to get a result, but instead of getting lighter as you pile on more color, CMYK is <em>subtractive</em>, meaning results will be darker when more color is added.</p>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="c">Cyan</label>
+          <input id="c" data-key="cyan" class="colorspace__range colorspace__range--cyan" type="range" min=0 max=255 />
+        </div>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="m">Magenta</label>
+          <input id="m" data-key="magenta" class="colorspace__range colorspace__range--magenta" type="range" min=0 max=255 />
+        </div>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="y">Yellow</label>
+          <input id="y" data-key="yellow" class="colorspace__range colorspace__range--yellow" type="range" min=0 max=255 />
+        </div>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="k">Key</label>
+          <input id="k" data-key="key" class="colorspace__range colorspace__range--key" type="range" min=0 max=255 />
+        </div>
       </div>
-      <div class="rgb__label-group">
-        <label class="rgb__label" for="g">Green</label>
-        <input id="g" data-key="green" class="rgb__range rgb__range--green" type="range" min=0 max=255 />
+      <output class="colorspace__container">
+        Hex: <span class="result--cmyk"></span>
+        <!--=include images/cmyk.svg -->
+      </output>
+    </form>
+
+    <form class="colorspace colorspace--rgb" data-colorspace="rgb">
+      <div class="colorspace__container">
+        <h1 class="colorspace__title colorspace--rgb__title">How does my screen work?</h1>
+        <p>Each pixel in your screen is made up of three sub-pixels, corresponding to the colors red, blue, and green. because of the proximity of the subpixels, rather than seeing the individual diodes, we tend to see the composite color they form when lit.</p>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="c">Red</label>
+          <input id="c" data-key="red" class="colorspace__range colorspace__range--red" type="range" min=0 max=255 />
+        </div>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="g">Green</label>
+          <input id="g" data-key="green" class="colorspace__range colorspace__range--green" type="range" min=0 max=255 />
+        </div>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="b">Blue</label>
+          <input id="b" data-key="blue" class="colorspace__range colorspace__range--blue" type="range" min=0 max=255 />
+        </div>
       </div>
-      <div class="rgb__label-group">
-        <label class="rgb__label" for="b">Blue</label>
-        <input id="b" data-key="blue" class="rgb__range rgb__range--blue" type="range" min=0 max=255 />
-      </div>
-      <output>
-        Hex: <span id=result></span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720">
-          <defs>
-            <style>
-              .cls-1 {
-                isolation: isolate;
-              }
-
-              .cls-2 {
-                fill: lime;
-              }
-
-              .cls-2, .cls-3, .cls-4 {
-                mix-blend-mode: screen;
-              }
-
-              .cls-3 {
-                fill: blue;
-              }
-
-              .cls-4 {
-                fill: red;
-              }
-            </style>
-          </defs>
-          <title>rgb</title>
-          <g class="cls-1">
-            <g id="Layer_1" data-name="Layer 1">
-              <circle id="green" class="cls-2" cx="358.78" cy="308.39" r="264.95"/>
-              <circle id="blue" class="cls-3" cx="301.52" cy="407.56" r="264.95" transform="translate(-163.38 205.36) rotate(-30)"/>
-              <circle id="red" class="cls-4" cx="417.56" cy="405.97" r="265.86" transform="translate(-142.49 565.72) rotate(-60.11)"/>
-            </g>
-          </g>
-        </svg>
-
-
+      <output class="colorspace__container">
+        Hex: <span class="result--rgb"></span>
+        <!--=include images/rgb.svg -->
       </output>
     </form>
 

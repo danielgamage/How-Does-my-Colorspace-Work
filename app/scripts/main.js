@@ -1,11 +1,22 @@
-let props = {
-  red: 100,
-  blue: 155,
-  green: 20,
+let state = {
+  rgb: {
+    red: 255,
+    blue: 255,
+    green: 255,
+  },
+  cmyk: {
+    cyan: 100,
+    magenta: 100,
+    yellow: 100,
+    key: 100,
+  },
 }
+const rgb = ['red', 'green', 'blue']
+const cmyk = ['cyan', 'magenta', 'yellow', 'key']
 
-;['red', 'green', 'blue'].map((el, i) => {
-  updateColor(props[el], el)
+rgb.map((el, i) => {
+  updateColor(state.rgb[el], el, 'rgb')
+
 })
 
 function getHex(r,g,b) {
@@ -18,24 +29,53 @@ function getHex(r,g,b) {
   return hex
 }
 
-
-function updateColor(value, color) {
-  const rgbArray = [0, 0, 0]
-  const i = ['red', 'green', 'blue'].indexOf(color)
-  rgbArray[i] = value
-  props[color] = value
+function updateColor(value, color, colorspace) {
+  let rgbArray = [];
+  if (colorspace === 'cmyk') {
+    let cmykArray = [0, 0, 0, 0]
+    const i = cmyk.indexOf(color)
+    state.cmyk[color] = value
+    cmykArray[i] = value
+    rgbArray = cmykToRgb(...cmykArray)
+  }
+  else if (colorspace === 'rgb') {
+    rgbArray = [0, 0, 0]
+    const i = rgb.indexOf(color)
+    state.rgb[color] = value
+    rgbArray[i] = value
+  }
 
   const element = document.querySelector('#' + color)
   element.style.fill = `rgb(${rgbArray.join(',')})`
-
-  document.querySelector('#result')
-    .innerHTML = '#' + getHex(props.red, props.green, props.blue)
+  console.log(colorspace)
+  document.querySelector(`.result--${colorspace}`)
+    .innerHTML = '#' + getHex(state.rgb.red, state.rgb.green, state.rgb.blue)
 }
 
-// bind events
-const ranges = document.querySelectorAll('.rgb__range')
+function cmykToRgb(c, m, y, k) {
+  c = c / 255
+  m = m / 255
+  y = y / 255
+  k = k / 255
+
+  let r = 1 - Math.min( 1, c * ( 1 - k ) + k )
+  let g = 1 - Math.min( 1, m * ( 1 - k ) + k )
+  let b = 1 - Math.min( 1, y * ( 1 - k ) + k )
+
+  r = Math.round( r * 255 )
+  g = Math.round( g * 255 )
+  b = Math.round( b * 255 )
+
+  return [r, g, b]
+}
+
+// bind inputs
+const ranges = document.querySelectorAll('.colorspace__range')
 ;[...ranges].map(el => {
   el.addEventListener('input', (e) => {
-    updateColor(e.target.value, e.target.getAttribute('data-key'))
+    const value = e.target.value
+    const color = e.target.getAttribute('data-key')
+    const colorspace = e.target.closest('.colorspace').getAttribute('data-colorspace')
+    updateColor(value, color, colorspace)
   })
 })

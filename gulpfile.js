@@ -5,6 +5,7 @@ const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const ghPages = require('gulp-gh-pages');
+const include = require("gulp-include");
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -52,9 +53,22 @@ gulp.task('lint:test', () => {
     .pipe(gulp.dest('test/spec/'));
 });
 
-gulp.task('html', ['styles', 'scripts'], () => {
+gulp.task('html', () => {
   return gulp.src('app/*.html')
     .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe(include())
+      .on('error', console.log)
+    .pipe($.if('*.js', $.uglify()))
+    .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
+    .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
+    .pipe(gulp.dest('.tmp'));
+});
+
+gulp.task('html:dist', () => {
+  return gulp.src('app/*.html')
+    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
+    .pipe(include())
+      .on('error', console.log)
     .pipe($.if('*.js', $.uglify()))
     .pipe($.if('*.css', $.cssnano({safe: true, autoprefixer: false})))
     .pipe($.if('*.html', $.htmlmin({collapseWhitespace: true})))
@@ -111,6 +125,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 
   gulp.watch('app/styles/**/*.css', ['styles']);
   gulp.watch('app/scripts/**/*.js', ['scripts']);
+  gulp.watch(['app/**/*.html', 'app/**/*.svg'], ['html']);
   gulp.watch('app/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
@@ -153,7 +168,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html:dist', 'styles', 'scripts', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
