@@ -4,6 +4,7 @@ const gulpLoadPlugins = require('gulp-load-plugins');
 const browserSync = require('browser-sync');
 const del = require('del');
 const wiredep = require('wiredep').stream;
+const ghPages = require('gulp-gh-pages');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -48,7 +49,7 @@ gulp.task('lint:test', () => {
       mocha: true
     }
   })
-    .pipe(gulp.dest('test/spec/**/*.js'));
+    .pipe(gulp.dest('test/spec/'));
 });
 
 gulp.task('html', ['styles', 'scripts'], () => {
