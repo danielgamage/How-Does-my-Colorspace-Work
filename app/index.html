@@ -30,7 +30,30 @@
       </ul>
     </nav>
 
-    <form class="colorspace colorspace--cmyk" data-colorspace="cmyk">
+    <section class="colorspace colorspace--rgb" data-colorspace="rgb">
+      <div class="colorspace__container">
+        <h1 class="colorspace__title colorspace--rgb__title">How does my screen work?</h1>
+        <p>Each pixel in your screen is made up of three sub-pixels, corresponding to the colors red, blue, and green. because of the proximity of the subpixels, rather than seeing the individual diodes, we tend to see the composite color they form when lit.</p>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="c">Red</label>
+          <input id="c" data-key="red" class="colorspace__range colorspace__range--red" type="range" min=0 max=255 />
+        </div>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="g">Green</label>
+          <input id="g" data-key="green" class="colorspace__range colorspace__range--green" type="range" min=0 max=255 />
+        </div>
+        <div class="colorspace__label-group">
+          <label class="colorspace__label" for="b">Blue</label>
+          <input id="b" data-key="blue" class="colorspace__range colorspace__range--blue" type="range" min=0 max=255 />
+        </div>
+      </div>
+      <output for="r g b" class="colorspace__container">
+        <!--=include images/rgb.svg -->
+        Hex: <span class="result--rgb"></span>
+      </output>
+    </section>
+
+    <section class="colorspace colorspace--cmyk" data-colorspace="cmyk">
       <div class="colorspace__container">
         <h1 class="colorspace__title colorspace--cmyk__title">How does my printer work?</h1>
         <p>If you've ever laid ink on top of itself, it tends to get darker, no matter the color. That's how the CMYK color model works. Like RGB, CMYK mixes a few principal colors together to get a result, but instead of getting lighter as you pile on more color, CMYK is <em>subtractive</em>, meaning results will be darker when more color is added.</p>
@@ -51,34 +74,11 @@
           <input id="k" data-key="key" class="colorspace__range colorspace__range--key" type="range" min=0 max=255 />
         </div>
       </div>
-      <output class="colorspace__container">
-        Hex: <span class="result--cmyk"></span>
+      <output for="c m y k" class="colorspace__container">
         <!--=include images/cmyk.svg -->
+        Hex: <span class="result--cmyk"></span>
       </output>
-    </form>
-
-    <form class="colorspace colorspace--rgb" data-colorspace="rgb">
-      <div class="colorspace__container">
-        <h1 class="colorspace__title colorspace--rgb__title">How does my screen work?</h1>
-        <p>Each pixel in your screen is made up of three sub-pixels, corresponding to the colors red, blue, and green. because of the proximity of the subpixels, rather than seeing the individual diodes, we tend to see the composite color they form when lit.</p>
-        <div class="colorspace__label-group">
-          <label class="colorspace__label" for="c">Red</label>
-          <input id="c" data-key="red" class="colorspace__range colorspace__range--red" type="range" min=0 max=255 />
-        </div>
-        <div class="colorspace__label-group">
-          <label class="colorspace__label" for="g">Green</label>
-          <input id="g" data-key="green" class="colorspace__range colorspace__range--green" type="range" min=0 max=255 />
-        </div>
-        <div class="colorspace__label-group">
-          <label class="colorspace__label" for="b">Blue</label>
-          <input id="b" data-key="blue" class="colorspace__range colorspace__range--blue" type="range" min=0 max=255 />
-        </div>
-      </div>
-      <output class="colorspace__container">
-        Hex: <span class="result--rgb"></span>
-        <!--=include images/rgb.svg -->
-      </output>
-    </form>
+    </section>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>

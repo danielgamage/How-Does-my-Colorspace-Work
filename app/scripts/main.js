@@ -1,23 +1,36 @@
-let state = {
+var state = {
   rgb: {
     red: 255,
     blue: 255,
     green: 255,
+    color: []
   },
   cmyk: {
-    cyan: 100,
-    magenta: 100,
-    yellow: 100,
-    key: 100,
+    cyan: 200,
+    magenta: 200,
+    yellow: 200,
+    key: 200,
+    color: []
   },
 }
 const rgb = ['red', 'green', 'blue']
 const cmyk = ['cyan', 'magenta', 'yellow', 'key']
 
+// init rgb
 rgb.map((el, i) => {
-  updateColor(state.rgb[el], el, 'rgb')
-
+  updateSwatch(state.rgb[el], el, 'rgb')
+  document.querySelector(`[data-key=${el}]`).setAttribute('value', state.rgb[el])
 })
+updateResult('rgb')
+state['rgb'].color = getColor('rgb')
+
+// init cmyk
+cmyk.map((el, i) => {
+  updateSwatch(state.cmyk[el], el, 'cmyk')
+  document.querySelector(`[data-key=${el}]`).setAttribute('value', state.cmyk[el])
+})
+updateResult('cmyk')
+state['cmyk'].color = getColor('cmyk')
 
 function getHex(r,g,b) {
   const hex = [r,g,b]
@@ -29,7 +42,20 @@ function getHex(r,g,b) {
   return hex
 }
 
-function updateColor(value, color, colorspace) {
+function getColor(colorspace) {
+  if (colorspace === 'cmyk') {
+    return cmykToRgb(state.cmyk.cyan, state.cmyk.magenta, state.cmyk.yellow, state.cmyk.key)
+  } else {
+    return Array(state.rgb.red, state.rgb.green, state.rgb.blue)
+  }
+}
+
+function updateResult(colorspace) {
+  document.querySelector(`.result--${colorspace}`)
+    .innerHTML = '#' + getHex(...state[colorspace].color)
+}
+
+function updateSwatch(value, color, colorspace) {
   let rgbArray = [];
   if (colorspace === 'cmyk') {
     let cmykArray = [0, 0, 0, 0]
@@ -47,9 +73,8 @@ function updateColor(value, color, colorspace) {
 
   const element = document.querySelector('#' + color)
   element.style.fill = `rgb(${rgbArray.join(',')})`
-  console.log(colorspace)
-  document.querySelector(`.result--${colorspace}`)
-    .innerHTML = '#' + getHex(state.rgb.red, state.rgb.green, state.rgb.blue)
+  state[colorspace].color = getColor(colorspace)
+  updateResult(colorspace)
 }
 
 function cmykToRgb(c, m, y, k) {
@@ -76,6 +101,6 @@ const ranges = document.querySelectorAll('.colorspace__range')
     const value = e.target.value
     const color = e.target.getAttribute('data-key')
     const colorspace = e.target.closest('.colorspace').getAttribute('data-colorspace')
-    updateColor(value, color, colorspace)
+    updateSwatch(value, color, colorspace)
   })
 })
