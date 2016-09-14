@@ -1,24 +1,46 @@
 <!doctype html><html lang=""><head><meta charset="utf-8"><meta name="description" content=""><meta name="viewport" content="width=device-width,initial-scale=1"><title>rgb</title><link rel="apple-touch-icon" href="apple-touch-icon.png"><!-- Place favicon.ico in the root directory --><link rel="stylesheet" href="styles/main.css"></head><body><!--[if lt IE 10]>
       <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--><form id="rgb" class="hero-unit"><h1>How does my screen work?</h1><p>Each pixel in your screen is made up of three sub-pixels, corresponding to the colors red, blue, and green. because of the proximity of the subpixels, rather than seeing the individual diodes, we tend to see the composite color they form when lit.</p><div class="rgb__label-group"><label class="rgb__label" for="r">Red</label><input id="r" data-key="red" class="rgb__range rgb__range--red" type="range" min="0" max="255"></div><div class="rgb__label-group"><label class="rgb__label" for="g">Green</label><input id="g" data-key="green" class="rgb__range rgb__range--green" type="range" min="0" max="255"></div><div class="rgb__label-group"><label class="rgb__label" for="b">Blue</label><input id="b" data-key="blue" class="rgb__range rgb__range--blue" type="range" min="0" max="255"></div><output>Hex: <span id="result"></span> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720"><defs><style>.cls-1 {
+    <![endif]--><nav class="header"><ul class="header__list"><li class="header__list-item"><a class="header__list-link" href="/screen">Screen</a></li><li class="header__list-item"><a class="header__list-link" href="/printer">Printer</a></li></ul></nav><section class="colorspace colorspace--rgb" data-colorspace="rgb"><div class="colorspace__container"><h1 class="colorspace__title colorspace--rgb__title">How does my screen work?</h1><p>Each pixel in your screen is made up of three sub-pixels, corresponding to the colors red, blue, and green. because of the proximity of the subpixels, rather than seeing the individual diodes, we tend to see the composite color they form when lit.</p><div class="colorspace__label-group"><label class="colorspace__label" for="c">Red</label><input id="c" data-key="red" class="colorspace__range colorspace__range--red" type="range" min="0" max="255"></div><div class="colorspace__label-group"><label class="colorspace__label" for="g">Green</label><input id="g" data-key="green" class="colorspace__range colorspace__range--green" type="range" min="0" max="255"></div><div class="colorspace__label-group"><label class="colorspace__label" for="b">Blue</label><input id="b" data-key="blue" class="colorspace__range colorspace__range--blue" type="range" min="0" max="255"></div></div><output for="r g b" class="colorspace__container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720"><defs><style>.rgb-1 {
                 isolation: isolate;
               }
-
-              .cls-2 {
+        
+              .rgb-2 {
                 fill: lime;
               }
-
-              .cls-2, .cls-3, .cls-4 {
+        
+              .rgb-2, .rgb-3, .rgb-4 {
                 mix-blend-mode: screen;
               }
-
-              .cls-3 {
+        
+              .rgb-3 {
                 fill: blue;
               }
-
-              .cls-4 {
+        
+              .rgb-4 {
                 fill: red;
-              }</style></defs><title>rgb</title><g class="cls-1"><g id="Layer_1" data-name="Layer 1"><circle id="green" class="cls-2" cx="358.78" cy="308.39" r="264.95"/><circle id="blue" class="cls-3" cx="301.52" cy="407.56" r="264.95" transform="translate(-163.38 205.36) rotate(-30)"/><circle id="red" class="cls-4" cx="417.56" cy="405.97" r="265.86" transform="translate(-142.49 565.72) rotate(-60.11)"/></g></g></svg></output></form><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+              }</style></defs><title>rgb</title><g class="rgb-1"><g id="Layer_1" data-name="Layer 1"><circle id="red" class="rgb-4" cx="358.78" cy="308.39" r="256"/><circle id="green" class="rgb-2" cx="301.52" cy="407.56" r="256" transform="translate(-163.38 205.36) rotate(-30)"/><circle id="blue" class="rgb-3" cx="417.56" cy="405.97" r="256" transform="translate(-142.49 565.72) rotate(-60.11)"/></g></g></svg> Hex: <span class="result--rgb"></span></output></section><section class="colorspace colorspace--cmyk" data-colorspace="cmyk"><div class="colorspace__container"><h1 class="colorspace__title colorspace--cmyk__title">How does my printer work?</h1><p>If you've ever laid ink on top of itself, it tends to get darker, no matter the color. That's how the CMYK color model works. Like RGB, CMYK mixes a few principal colors together to get a result, but instead of getting lighter as you pile on more color, CMYK is <em>subtractive</em>, meaning results will be darker when more color is added.</p><div class="colorspace__label-group"><label class="colorspace__label" for="c">Cyan</label><input id="c" data-key="cyan" class="colorspace__range colorspace__range--cyan" type="range" min="0" max="255"></div><div class="colorspace__label-group"><label class="colorspace__label" for="m">Magenta</label><input id="m" data-key="magenta" class="colorspace__range colorspace__range--magenta" type="range" min="0" max="255"></div><div class="colorspace__label-group"><label class="colorspace__label" for="y">Yellow</label><input id="y" data-key="yellow" class="colorspace__range colorspace__range--yellow" type="range" min="0" max="255"></div><div class="colorspace__label-group"><label class="colorspace__label" for="k">Key</label><input id="k" data-key="key" class="colorspace__range colorspace__range--key" type="range" min="0" max="255"></div></div><output for="c m y k" class="colorspace__container"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720"><defs><style>.cmyk-1 {
+                isolation: isolate;
+              }
+        
+              .cmyk-2 {
+                fill: #eb008c;
+              }
+        
+              .cmyk-2, .cmyk-3, .cmyk-4, .cmyk-5 {
+                mix-blend-mode: multiply;
+              }
+        
+              .cmyk-3 {
+                fill: #fff200;
+              }
+        
+              .cmyk-4 {
+                fill: #231f20;
+              }
+        
+              .cmyk-5 {
+                fill: #00aeef;
+              }</style></defs><title>cmyk</title><g class="cmyk-1"><g id="cmyk"><circle id="cyan" class="cmyk-5" cx="360" cy="303.55" r="256"/><circle id="magenta" class="cmyk-2" cx="303.55" cy="360" r="256"/><circle id="yellow" class="cmyk-3" cx="416.45" cy="360" r="256"/><circle id="key" class="cmyk-4" cx="360" cy="416.45" r="256"/></g></g></svg> Hex: <span class="result--cmyk"></span></output></section><!-- Google Analytics: change UA-XXXXX-X to be your site's ID. --><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
       e.src='https://www.google-analytics.com/analytics.js';
